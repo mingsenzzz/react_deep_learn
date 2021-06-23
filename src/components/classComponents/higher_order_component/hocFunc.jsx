@@ -1,6 +1,5 @@
 import React from "react";
 function HigherOrderComponent(WrappedComponent) {
-  console.log(WrappedComponent, "WrappedComponent");
   return class NewComponent extends React.Component {
     constructor(props) {
       super(props);
