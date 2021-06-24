@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Table } from "antd";
+import ChildC from "./childC.jsx";
+
 import { makeData } from "./utils.js";
 const columns = [
   {
@@ -18,8 +20,8 @@ const columns = [
     key: "address",
   },
 ];
-
-function BasicHook() {
+export const TableDataContext = React.createContext([]);
+export function BasicHook() {
   const [tableData, setTableData] = useState([]);
   const [currPage, setCurrpage] = useState(1);
   useEffect(() => {
@@ -42,8 +44,9 @@ function BasicHook() {
           },
         }}
       />
+      <TableDataContext.Provider value={tableData}>
+        <ChildC />
+      </TableDataContext.Provider>
     </div>
   );
 }
-
-export default BasicHook;
