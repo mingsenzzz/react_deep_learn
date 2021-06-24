@@ -7,11 +7,13 @@ import WrappedComponent from "../src/components/classComponents/higher_order_com
 //测试hooks组件
 import { BasicHook } from "../src/components/hooksComponents/index.jsx";
 
+import { UseReducerFunc } from "../src/components/hooksComponents/useReducer.jsx";
 const root = document.createElement("div");
 window.document.body.appendChild(root);
 ReactDOM.render(
   <div>
     <Content />
+    <UseReducerFunc />
     <BasicHook />
     {/* <WrappedComponent /> */}
   </div>,

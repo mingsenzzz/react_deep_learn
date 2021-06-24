@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Table } from "antd";
-import ChildC from "./childC.jsx";
+import UseContext from "./useContext.jsx";
 
 import { makeData } from "./utils.js";
 const columns = [
@@ -45,7 +45,7 @@ export function BasicHook() {
         }}
       />
       <TableDataContext.Provider value={tableData}>
-        <ChildC />
+        <UseContext />
       </TableDataContext.Provider>
     </div>
   );
