@@ -12,6 +12,8 @@ import { UseReducerFunc } from "../src/components/hooksComponents/useReducer.jsx
 import UseCallBackFunc from "../src/components/hooksComponents/useCallBack.jsx";
 //使用useMemo hook的组件
 import UseMemo from "../src/components/hooksComponents/useMemo.jsx";
+//使用useref hook组件
+import UseRef from "../src/components/hooksComponents/useRef.jsx";
 const root = document.createElement("div");
 window.document.body.appendChild(root);
 ReactDOM.render(
@@ -21,7 +23,8 @@ ReactDOM.render(
     {/* <BasicHook /> */}
     {/* <WrappedComponent /> */}
     {/* <UseCallBackFunc /> */}
-    <UseMemo />
+    {/* <UseMemo /> */}
+    <UseRef />
   </div>,
   root
 );
