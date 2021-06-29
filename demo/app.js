@@ -14,6 +14,8 @@ import UseCallBackFunc from "../src/components/hooksComponents/useCallBack.jsx";
 import UseMemo from "../src/components/hooksComponents/useMemo.jsx";
 //使用useref hook组件
 import UseRef from "../src/components/hooksComponents/useRef.jsx";
+//使用自定义hook
+import CustomeHookFunc from "../src/components/hooksComponents/customHooks.jsx";
 const root = document.createElement("div");
 window.document.body.appendChild(root);
 ReactDOM.render(
@@ -24,7 +26,8 @@ ReactDOM.render(
     {/* <WrappedComponent /> */}
     {/* <UseCallBackFunc /> */}
     {/* <UseMemo /> */}
-    <UseRef />
+    {/* <UseRef /> */}
+    <CustomeHookFunc />
   </div>,
   root
 );
