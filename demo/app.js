@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import reduxThunk from "redux-thunk";
+import { createStore, applyMiddleware } from "redux";
 import {
   HashRouter as Router,
   Switch,
@@ -34,7 +35,7 @@ import CustomeHookFunc from "../src/components/hooksComponents/customHooks.jsx";
 const root = document.createElement("div");
 window.document.body.appendChild(root);
 
-const store = createStore(reducers);
+const store = createStore(reducers, applyMiddleware(reduxThunk));
 ReactDOM.render(
   <Provider store={store}>
     <Router>

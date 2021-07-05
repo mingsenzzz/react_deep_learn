@@ -8,6 +8,7 @@ class List extends React.Component {
 
   render() {
     const { todosList } = this.props;
+    console.log(todosList, "todosList");
     return (
       <div>
         {todosList.map((item, index) => {
