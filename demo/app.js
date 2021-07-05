@@ -36,6 +36,22 @@ const root = document.createElement("div");
 window.document.body.appendChild(root);
 
 const store = createStore(reducers, applyMiddleware(reduxThunk));
+//reduxThunk的原理：
+// 重写了store身上的dispatch方法
+
+// const originDispatch = store.dispatch;
+
+// store.dispatch = (param) => {
+// 	if (typeof param == 'function') {
+// 		//说明传入的是函数,则调用函数，然后将最初的dispatch传回给函数，
+// 		//这样在传入的函数中获取接口返回值之后，调用dispatch就可以了
+// 		param(originDispatch)
+// 	} else {
+// 		//如果不是函数，那么则还按照同步的处理
+// 		originDispatch(param)
+// 	}
+// }
+
 ReactDOM.render(
   <Provider store={store}>
     <Router>
