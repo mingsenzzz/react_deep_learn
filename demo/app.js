@@ -10,6 +10,8 @@ import {
   Redirect,
 } from "react-router-dom";
 import UsersPage from "../src/pages/UsersPage/index.jsx";
+import Department from "../src/pages/Department/index.jsx";
+
 //测试高阶组件的使用
 import WrappedComponent from "../src/components/classComponents/higher_order_component/wrappedCom.jsx";
 //测试hooks组件
@@ -29,12 +31,15 @@ window.document.body.appendChild(root);
 ReactDOM.render(
   <Router>
     <Switch>
-      <Route path="/users">
-        <UsersPage />
-      </Route>
       <Route path="/home">
         <HomePage />
+        {/* 嵌套子路由 */}
+        <Switch>
+          <Route path="/home/department" component={Department} />
+          <Route path="/home/users" component={UsersPage} />
+        </Switch>
       </Route>
+
       <Route path="/">
         <Redirect to="/home" />
       </Route>

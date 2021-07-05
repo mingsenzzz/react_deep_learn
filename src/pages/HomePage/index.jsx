@@ -1,20 +1,24 @@
-import React from "react";
-import { Button } from "antd";
+import React, { useState } from "react";
+import { Button, Tabs } from "antd";
+import "./index.less";
 import { Router, withRouter } from "react-router-dom";
 
+const { TabPane } = Tabs;
 function Home(props) {
   const { history } = props;
-  console.log(props, "props");
+  const isInUser = history.location.pathname.indexOf("users") > -1;
+  //刷新之后定位到路由
+  const [activeTab, setActiveTab] = useState(isInUser ? "2" : "3");
+  function onTabChange(key) {
+    history.push(key == 2 ? "/home/users" : "/home/department");
+    setActiveTab(key);
+  }
   return (
-    <div>
-      hgomePage
-      <Button
-        onClick={() => {
-          history.push("/users");
-        }}
-      >
-        To users page
-      </Button>
+    <div className="company">
+      <Tabs activeKey={activeTab} onChange={onTabChange}>
+        <TabPane tab="Tab 2" key="2" />
+        <TabPane tab="Tab 3" key="3" />
+      </Tabs>
     </div>
   );
 }
