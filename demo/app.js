@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import reduxThunk from "redux-thunk";
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import {
   HashRouter as Router,
   Switch,
@@ -35,7 +35,11 @@ import CustomeHookFunc from "../src/components/hooksComponents/customHooks.jsx";
 const root = document.createElement("div");
 window.document.body.appendChild(root);
 
-const store = createStore(reducers, applyMiddleware(reduxThunk));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(
+  reducers,
+  composeEnhancers(applyMiddleware(reduxThunk))
+);
 //reduxThunk的原理：
 // 重写了store身上的dispatch方法
 
