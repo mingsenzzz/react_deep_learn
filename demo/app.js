@@ -18,6 +18,7 @@ import reducers from "../src/redux/reducers/index.js";
 import UsersPage from "../src/pages/UsersPage/index.jsx";
 import Department from "../src/pages/Department/index.jsx";
 import TodosList from "../src/components/todosList/index.jsx";
+import UerRequest from "../src/useRequest/index.jsx";
 //测试高阶组件的使用
 import WrappedComponent from "../src/components/classComponents/higher_order_component/wrappedCom.jsx";
 //测试hooks组件
@@ -70,6 +71,9 @@ ReactDOM.render(
         </Route>
         <Route path="/classC">
           <TodosList />
+        </Route>
+        <Route path="/axios">
+          <UerRequest />
         </Route>
         <Route path="/">
           <Redirect to="/home" />
