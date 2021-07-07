@@ -10,10 +10,12 @@ import {
   Link,
   Redirect,
 } from "react-router-dom";
+import { renderRoutes } from "react-router-config";
 
 import Content from "../src/components/classComponents/content/index.jsx";
 import HomePage from "../src/pages/HomePage/index.jsx";
 import reducers from "../src/redux/reducers/index.js";
+import routes from "../src/router";
 
 import UsersPage from "../src/pages/UsersPage/index.jsx";
 import Department from "../src/pages/Department/index.jsx";
@@ -60,25 +62,7 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <Switch>
-        <Route path="/home">
-          <HomePage />
-          {/* 嵌套子路由 */}
-          <Switch>
-            <Route path="/home/department" component={Department} />
-            <Route path="/home/users" component={UsersPage} />
-          </Switch>
-        </Route>
-        <Route path="/classC">
-          <TodosList />
-        </Route>
-        <Route path="/axios">
-          <UerRequest />
-        </Route>
-        <Route path="/">
-          <Redirect to="/home" />
-        </Route>
-      </Switch>
+      <Switch>{renderRoutes(routes)}</Switch>
     </Router>
   </Provider>,
   root
