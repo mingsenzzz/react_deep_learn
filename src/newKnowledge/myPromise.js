@@ -7,16 +7,16 @@ class MyPromise {
   status = "pending";
   value = undefined;
   errorMsg = undefined;
-  onResolveCallback = null;
-  onRejectCallback = null;
+  onResolveCallback = [];
+  onRejectCallback = [];
 
   resolve = (value) => {
     this.value = value;
-    this.status = "fullfilled";
+    this.status = "";
 
     //当状态改变成时，则执行回调函数
-    if (this.onResolveCallback) {
-      this.onResolveCallback(value);
+    while (this.onResolveCallback.length) {
+      this.onResolveCallback.shift()(value);
     }
   };
 
@@ -25,8 +25,8 @@ class MyPromise {
     this.status = "rejected";
 
     //当状态改变成时，则执行回调函数
-    if (this.onRejectCallback) {
-      this.onRejectCallback(msg);
+    while (this.onRejectCallback.length) {
+      this.onRejectCallback.shift()(msg);
     }
   };
 
@@ -42,9 +42,12 @@ class MyPromise {
       }
     }
 
+    //因为如果执行器中有异步操作的话，
+    //并且修改状态的resolve和reject在异步操作中，
+    //那么状态不会修改，所以需要存储，.then时传入的两个异步回调；
     if (this.status == "pending") {
-      this.onResolveCallback = resolveFun;
-      this.onRejectCallback = rejectFun;
+      this.onResolveCallback.push(resolveFun);
+      this.onRejectCallback.push(rejectFun);
     }
   };
 

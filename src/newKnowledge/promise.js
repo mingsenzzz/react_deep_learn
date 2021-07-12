@@ -17,18 +17,23 @@ const PromiseComponent = () => {
 
   //相当于先执行执行器，然后又调用了then方法，
   //如果执行器中是异步的操作，那么在调用then方法时，promise的状态还没有改变，会有问题
-  new MyPromise((resolve, reject) => {
+  const childP = new MyPromise((resolve, reject) => {
     setTimeout(() => {
-      reject("错误信息");
+      resolve("成功啦");
     }, 1000);
-  }).then(
-    (res) => {
-      console.log(res, "res");
-    },
-    (error) => {
-      console.log(error, "error");
-    }
-  );
+  });
+
+  childP.then((res) => {
+    console.log(res, "res1111");
+  });
+
+  childP.then((res) => {
+    console.log(res, "res2222");
+  });
+
+  childP.then((res) => {
+    console.log(res, "res3333");
+  });
 
   return <div>2222222</div>;
 };
