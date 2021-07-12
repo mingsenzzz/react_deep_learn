@@ -15,8 +15,12 @@ const PromiseComponent = () => {
   // raceFunc();
   // catchAndThenFunc();
 
+  //相当于先执行执行器，然后又调用了then方法，
+  //如果执行器中是异步的操作，那么在调用then方法时，promise的状态还没有改变，会有问题
   new MyPromise((resolve, reject) => {
-    reject("错误信息");
+    setTimeout(() => {
+      reject("错误信息");
+    }, 1000);
   }).then(
     (res) => {
       console.log(res, "res");
