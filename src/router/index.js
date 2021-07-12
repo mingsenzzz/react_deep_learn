@@ -5,7 +5,7 @@ import Department from "../pages/Department/index.jsx";
 import HomePage from "../pages/HomePage/index.jsx";
 import UsersPage from "../pages/UsersPage/index.jsx";
 import UseRequest from "../useRequest/index.jsx";
-
+import PromiseC from "../newKnowledge/promise";
 const routes = [
   {
     path: "/",
@@ -42,6 +42,10 @@ const routes = [
   {
     path: "/axios",
     component: UseRequest,
+  },
+  {
+    path: "/promise",
+    component: PromiseC,
   },
 ];
 
