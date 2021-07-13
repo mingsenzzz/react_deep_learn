@@ -6,6 +6,7 @@ import HomePage from "../pages/HomePage/index.jsx";
 import UsersPage from "../pages/UsersPage/index.jsx";
 import UseRequest from "../useRequest/index.jsx";
 import PromiseC from "../newKnowledge/promise";
+import Flex from "../pages/Flex/index.js";
 const routes = [
   {
     path: "/",
@@ -46,6 +47,10 @@ const routes = [
   {
     path: "/promise",
     component: PromiseC,
+  },
+  {
+    path: "/flex",
+    component: Flex,
   },
 ];
 
